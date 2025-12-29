@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of J.R. International Hr. Sec. School, Loni, Ghaziabad. English Medium, Government Recognized, Nursery to XII.">
-    <title>J.R. International Hr. Sec. School - Come to Learn, Go to Serve</title>
+    <meta name="description" content="Official website of J.R. International Hr. Sec. School, Loni, Ghaziabad.">
+    <title>J.R. International Hr. Sec. School</title>
+    
+    <!-- Google Fonts for a Cleaner, School-Friendly Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* --- RESET & VARIABLES --- */
         :root {
-            --primary-blue: #004aad; /* Royal Blue */
-            --secondary-red: #d32f2f; /* School Red */
-            --dark-gray: #333333;
-            --light-gray: #f4f4f4;
+            --primary: #0066cc;       /* Friendly Royal Blue */
+            --primary-dark: #004a99;
+            --accent: #ff4d4d;        /* Soft Red */
+            --bg-light: #f4f7fa;      /* Very light blue-grey background */
             --white: #ffffff;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --padding-section: 60px 0;
+            --text-main: #2c3e50;
+            --text-light: #5f6c7b;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 15px;           /* Rounded corners */
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            /* Removes the blue highlight on mobile taps */
+            -webkit-tap-highlight-color: transparent; 
         }
 
         html {
@@ -28,602 +36,781 @@
         }
 
         body {
-            font-family: var(--font-main);
-            color: var(--dark-gray);
-            line-height: 1.6;
-            background-color: var(--white);
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         a {
             text-decoration: none;
             color: inherit;
+            /* Removes focus outline for mouse users but keeps functionality */
+            outline: none;
         }
 
         ul {
             list-style: none;
         }
 
+        /* --- UTILITIES --- */
         .container {
-            width: 90%;
-            max-width: 1200px;
+            max-width: 1150px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
-        .section-title {
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--primary-blue);
-            position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-red);
-            margin: 10px auto 0;
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
         }
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--primary-blue);
+        .btn-primary {
+            background-color: var(--primary);
             color: var(--white);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .navbar {
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+        }
+
+        .btn-accent:hover {
+            background-color: #e60000;
+            transform: translateY(-2px);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            width: 100%;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
         }
-
+        
         .logo span {
-            font-size: 0.8rem;
-            color: #ddd;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 400;
+            display: block;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
-        .nav-links a {
-            color: var(--white);
-            font-weight: 500;
-            transition: color 0.3s;
+        .nav-link {
+            font-weight: 600;
             font-size: 0.95rem;
+            color: var(--text-main);
+            transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary-red);
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 4px;
+        .nav-link:hover {
+            color: var(--primary);
         }
 
+        /* Hamburger */
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            width: 30px;
+            height: 20px;
+            position: relative;
         }
+        
+        .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            position: absolute;
+            transition: 0.3s;
+        }
+        
+        .bar:nth-child(1) { top: 0; }
+        .bar:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .bar:nth-child(3) { bottom: 0; }
 
         /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 74, 173, 0.8), rgba(0, 30, 70, 0.9)), 
-                        url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23ccc%22%2F%3E%3C%2Fsvg%3E'); /* Fallback/Placeholder overlay */
+        #home {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.9), rgba(0, 50, 120, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding-top: 70px;
+            border-bottom-left-radius: 50px; /* Modern curve */
+            border-bottom-right-radius: 50px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
         }
 
         .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .hero-content h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #ddd;
-            font-style: italic;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            color: whitesmoke;
         }
 
         .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            background: rgba(255,255,255,0.2);
             display: inline-block;
-            background-color: var(--secondary-red);
-            padding: 5px 15px;
+            padding: 5px 20px;
             border-radius: 20px;
-            margin-bottom: 20px;
-            font-weight: bold;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
         }
 
-        .hero-content p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-red);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #b71c1c;
-        }
-
-        /* --- ABOUT US --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-text {
-            background-color: var(--light-gray);
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-blue);
-        }
-
-        .principal-message {
-            margin-top: 20px;
-            font-style: italic;
-            color: #555;
-        }
-
-        /* --- ACADEMICS --- */
-        .academic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-top: 3px solid var(--secondary-red);
-        }
-
-        .card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
-
-        .faculty-list li, .achievement-list li {
-            margin-bottom: 8px;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 8px;
-        }
-
-        /* --- ADMISSIONS --- */
-        .admission-steps {
+        .hero-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
-            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
-        .step {
-            background: var(--primary-blue);
-            color: var(--white);
-            width: 200px;
-            padding: 20px;
+        /* --- SECTION HEADERS --- */
+        .section-title {
             text-align: center;
-            border-radius: 8px;
-            position: relative;
+            margin-bottom: 50px;
         }
 
-        .fee-structure {
-            background-color: var(--light-gray);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* --- FACILITIES & GALLERY --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+        .separator {
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto;
+            border-radius: 2px;
         }
 
-        .gallery-item {
-            background-color: #ddd;
-            height: 200px;
+        /* --- CARDS GENERAL (Clean Look) --- */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- ABOUT --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .principal-box {
+            background-color: #fff0f0; /* Very light red tint */
+            padding: 30px;
+            border-radius: var(--radius);
+            border-left: 5px solid var(--accent);
+        }
+
+        /* --- ADMISSIONS --- */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 220px;
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-num {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        /* --- FACILITIES --- */
+        .facility-item {
+            text-align: center;
+        }
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* --- GALLERY --- */
+        .gallery-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-img {
+            height: 200px;
+            background-color: #e0e0e0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
             position: relative;
             overflow: hidden;
-            color: #666;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-transform: uppercase;
         }
         
-        /* Simulating images with CSS gradients */
-        .g-building { background: linear-gradient(45deg, #b0bec5, #eceff1); }
-        .g-classroom { background: linear-gradient(45deg, #ffe082, #fff8e1); }
-        .g-lab { background: linear-gradient(45deg, #80deea, #e0f7fa); }
-        .g-library { background: linear-gradient(45deg, #a1887f, #d7ccc8); }
-        .g-sports { background: linear-gradient(45deg, #a5d6a7, #e8f5e9); }
-        .g-transport { background: linear-gradient(45deg, #ffcc80, #fff3e0); }
-
-        /* --- EVENTS & NEWS --- */
-        .event-list {
-            list-style: none;
-        }
-        .event-item {
-            background: var(--white);
-            border-left: 4px solid var(--secondary-red);
-            margin-bottom: 15px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .event-date {
-            font-weight: bold;
-            color: var(--secondary-red);
-            font-size: 0.9rem;
+        /* Placeholder styling simulating image */
+        .gallery-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #f3f4f6 25%, #ffffff 25%, #ffffff 50%, #f3f4f6 50%, #f3f4f6 75%, #ffffff 75%, #ffffff 100%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 1;
         }
 
-        /* --- CONTACT --- */
+        /* --- CONTACT & MAP --- */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
 
-        .contact-info p {
-            margin-bottom: 15px;
+        .contact-details {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px;
         }
 
-        .contact-form input, .contact-form textarea {
+        .contact-details h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .map-section {
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        iframe {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
+            height: 100%;
+            border: 0;
         }
 
-        .map-container {
-            margin-top: 20px;
-            height: 250px;
-            background-color: #eee;
+        /* Form styling */
+        .inquiry-form {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 30px 10px;
+            background-color: #1a252f;
+            color: #ecf0f1;
+            padding-top: 60px;
             margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            margin: 0 10px;
-            font-size: 0.9rem;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
         }
 
-        /* --- MEDIA QUERIES --- */
+        .copyright {
+            background-color: #111820;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .navbar { padding: 0 20px; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-blue);
-                padding: 20px;
-                text-align: center;
-            }
-            .nav-links.active { display: flex; }
+            .hero-content h1 { font-size: 2.2rem; }
+            
             .hamburger { display: block; }
             
-            .hero-content h1 { font-size: 2rem; }
-            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                padding: 40px 0;
+                text-align: center;
+                transition: 0.3s ease-in-out;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }
             
-            .section-title { font-size: 2rem; }
+            .nav-menu.active { left: 0; }
+            
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-section {
+                height: 300px;
+            }
+            
+            .step-card {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <div class="container navbar">
-            <div class="logo">
-                J.R. International<br>Hr. Sec. School
-            </div>
-            <div class="hamburger" id="hamburger">
-                &#9776;
-            </div>
-            <nav class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#academics">Academics</a>
-                <a href="#admissions">Admissions</a>
-                <a href="#facilities">Facilities</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#events">Events</a>
-                <a href="#contact">Contact Us</a>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                J.R. International
+                <span>Hr. Sec. School</span>
+            </a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#academics" class="nav-link">Academics</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
             </nav>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Come to Learn,<br>Go to Serve</h1>
             <div class="tagline">Good People, Good School</div>
-            <h1>J.R. International<br>Hr. Sec. School</h1>
-            <h2>"Come to Learn, Go to Serve"</h2>
-            <p>Welcome to our nurturing environment where we foster academic excellence and community service for a brighter tomorrow.</p>
-            <a href="#admissions" class="btn">Apply Now</a>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
+                Government Recognized • English Medium • Nursery to XII<br>
+                Nurturing young minds in Loni since 1994.
+            </p>
+            <div class="hero-buttons">
+                <a href="#admissions" class="btn btn-accent">Apply for Admission</a>
+                <a href="#about" class="btn btn-primary" style="background: transparent; border: 2px solid white;">Learn More</a>
+            </div>
         </div>
     </section>
 
-    <section id="about" style="padding: var(--padding-section);">
+    <!-- About Section -->
+    <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-grid">
+            <div class="section-title">
+                <h2>About Our School</h2>
+                <div class="separator"></div>
+                <p>Building character and intellect for a better tomorrow.</p>
+            </div>
+            
+            <div class="about-content">
                 <div>
                     <h3>Our Legacy</h3>
-                    <p>Established in 1994, J.R. International Hr. Sec. School is a premier English Medium institution. We are Government Recognized and affiliated with the State Board. Our school operates in association with <strong>J.R. Global Association</strong> and <strong>J.R. International</strong>.</p>
-                    <br>
-                    <h3>Mission & Vision</h3>
-                    <p>We aim to provide holistic education that balances academic rigor with moral values. Our vision is to shape students who are not only successful professionals but also compassionate human beings.</p>
+                    <p style="margin-bottom: 15px;">Established in 1994, J.R. International Hr. Sec. School has been a pioneer in providing quality education in Ghaziabad. We are affiliated with the State Board and work in association with J.R. Global Association.</p>
+                    <p>We aim to provide a safe, nurturing environment where students are encouraged to explore their potential. Our motto "Good People, Good School" reflects our commitment to moral values.</p>
                 </div>
-                <div class="about-text">
-                    <h3>Principal's Message</h3>
-                    <p class="principal-message">"As Principal, I am committed to fostering an environment of excellence and compassion. Education is not just about books; it is about building character. We welcome you to join our family."</p>
-                    <br>
-                    <p><strong>- Principal, J.R. International</strong></p>
+                <div class="principal-box">
+                    <h4 style="color: var(--accent); margin-bottom: 15px;">Principal's Message</h4>
+                    <p style="font-style: italic; color: #555;">"Education is the passport to the future. At J.R. International, we don't just teach subjects; we teach life skills. Join us to give your child a foundation of excellence."</p>
+                    <div style="margin-top: 15px; font-weight: bold;">- The Principal</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="academics" style="background-color: var(--light-gray); padding: var(--padding-section);">
+    <!-- Academics Section -->
+    <section id="academics" class="section-padding" style="background-color: #fff;">
         <div class="container">
-            <h2 class="section-title">Academics</h2>
-            <div class="academic-grid">
+            <div class="section-title">
+                <h2>Academic Excellence</h2>
+                <div class="separator"></div>
+            </div>
+
+            <div class="grid-3">
                 <div class="card">
-                    <h3>Curriculum</h3>
-                    <p>We offer classes from <strong>Nursery to XII</strong>. Our curriculum is designed to foster critical thinking and creativity, adhering to State Board standards while integrating modern teaching methodologies.</p>
+                    <div class="icon-box">📘</div>
+                    <h4>Curriculum</h4>
+                    <p>A balanced curriculum from Nursery to XII focusing on Science, Commerce, and Arts with modern teaching aids.</p>
                 </div>
                 <div class="card">
-                    <h3>Our Faculty</h3>
-                    <ul class="faculty-list">
-                        <li><strong>Mrs. S. Gupta</strong> - M.Sc, B.Ed (Physics)</li>
-                        <li><strong>Mr. R. Kumar</strong> - M.A., B.Ed (English)</li>
-                        <li><strong>Mrs. A. Singh</strong> - M.Sc (Mathematics)</li>
-                        <li><strong>Mr. P. Verma</strong> - B.P.Ed (Sports & Health)</li>
-                    </ul>
+                    <div class="icon-box">👩‍🏫</div>
+                    <h4>Experienced Faculty</h4>
+                    <p>Our highly qualified teachers are dedicated to personalized attention and student mentorship.</p>
                 </div>
                 <div class="card">
-                    <h3>Achievements</h3>
-                    <ul class="achievement-list">
-                        <li>100% Pass Result in Class X Boards</li>
-                        <li>District Topper in Science Stream (2024)</li>
-                        <li>Winners of Inter-School Debate Championship</li>
-                        <li>Best Discipline School Award</li>
-                    </ul>
+                    <div class="icon-box">🏆</div>
+                    <h4>Achievements</h4>
+                    <p>Consistent 100% results in Board exams with district toppers and awards in sports and arts.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="admissions" style="padding: var(--padding-section);">
+    <!-- Admissions Section -->
+    <section id="admissions" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Admissions</h2>
-            <div class="admission-steps">
-                <div class="step">
-                    <h3>Step 1</h3>
-                    <p>Check Eligibility<br>(Age 3+ for Nursery)</p>
+            <div class="section-title">
+                <h2>Admission Process</h2>
+                <div class="separator"></div>
+                <p>Simple 4-step process to join our family.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Inquiry</h4>
+                    <p>Fill the form below or visit campus.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 2</h3>
-                    <p>Collect Form<br>Available at Office</p>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Form</h4>
+                    <p>Submit documents & details.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 3</h3>
-                    <p>Submit Documents<br>& Pay Fees</p>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Interact</h4>
+                    <p>Student interaction session.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h4>Fee</h4>
+                    <p>Pay fees & confirm seat.</p>
                 </div>
             </div>
             
-            <div class="fee-structure">
-                <h3>Fee Structure Overview</h3>
-                <p>We believe in affordable quality education.</p>
-                <p style="font-size: 1.2rem; font-weight: bold; margin-top: 10px;">Nursery - Starting approx. ₹15,000 Annually</p>
-                <p style="font-size: 0.9rem; color: #666;">*Please contact the office for the detailed fee chart for higher classes.</p>
+            <div class="text-center" style="margin-top: 40px;">
+                <p style="background: white; display: inline-block; padding: 10px 20px; border-radius: 10px; box-shadow: var(--shadow);">
+                    <strong>Fee Estimate:</strong> Starting from ₹15,000 / Year (Approx)
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="facilities" style="background-color: var(--light-gray); padding: var(--padding-section);">
+    <!-- Gallery Section -->
+    <section class="section-padding" style="background: white;">
         <div class="container">
-            <h2 class="section-title">Facilities</h2>
-            <div class="academic-grid">
-                <div class="card">
-                    <h3>Infrastructure</h3>
-                    <p>Spacious, well-ventilated classrooms, a fully stocked library, and modern Science and Computer laboratories.</p>
-                </div>
-                <div class="card">
-                    <h3>Sports & Arts</h3>
-                    <p>Large playground for Cricket, Football, and Badminton. Dedicated clubs for Music, Dance, and Art.</p>
-                </div>
-                <div class="card">
-                    <h3>Health & Safety</h3>
-                    <p>CCTV surveillance, secure transport, and first aid facilities. Located near J.C. Health Care Centre for emergencies.</p>
-                </div>
+            <div class="section-title">
+                <h2>Campus Gallery</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="gallery-wrapper">
+                <div class="gallery-img">School Building</div>
+                <div class="gallery-img">Science Lab</div>
+                <div class="gallery-img">Playground</div>
+                <div class="gallery-img">Library</div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" style="padding: var(--padding-section);">
+    <!-- Contact & Map Section -->
+    <section id="contact" class="section-padding">
         <div class="container">
-            <h2 class="section-title">School Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item g-building">School Building</div>
-                <div class="gallery-item g-classroom">Smart Classroom</div>
-                <div class="gallery-item g-lab">Computer Lab</div>
-                <div class="gallery-item g-library">Library</div>
-                <div class="gallery-item g-sports">Sports Day</div>
-                <div class="gallery-item g-transport">School Transport</div>
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <div class="separator"></div>
             </div>
-        </div>
-    </section>
 
-    <section id="events" style="background-color: var(--light-gray); padding: var(--padding-section);">
-        <div class="container">
-            <h2 class="section-title">Events & News</h2>
-            <div class="academic-grid">
-                <div class="event-item">
-                    <div class="event-date">Dec 25, 2025</div>
-                    <h3>Christmas Celebration</h3>
-                    <p>Students celebrated with carols and a skit promoting joy and giving.</p>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">Jan 26, 2026 (Upcoming)</div>
-                    <h3>Republic Day Parade</h3>
-                    <p>Flag hoisting ceremony and cultural program scheduled for 8:00 AM.</p>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">Feb 15, 2026 (Upcoming)</div>
-                    <h3>Annual Sports Meet</h3>
-                    <p>Inter-house competitions for Athletics, Kho-Kho, and Kabaddi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" style="padding: var(--padding-section);">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-details">
                     <h3>Get in Touch</h3>
-                    <p><strong>Address:</strong><br>Main Road, Ashok Vihar, Loni,<br>Ghaziabad, Uttar Pradesh - 201102, India</p>
-                    <p><strong>Phone:</strong><br><a href="tel:9811198112" style="color:var(--primary-blue);">+91 98111 98112</a></p>
-                    <p><strong>Email:</strong><br><a href="mailto:principal@jrinternationalschool.edu.in" style="color:var(--primary-blue);">principal@jrinternationalschool.edu.in</a></p>
+                    <p style="margin-bottom: 30px; opacity: 0.9;">Visit us or call us for any queries.</p>
                     
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.0279678888!2d77.28!3d28.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQ0JzI0LjAiTiA3N8KwMTYnNDguMCJF!5e0!3m2!1sen!2sin!4v1610000000000!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="100%" 
-                            frameborder="0" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            aria-hidden="false" 
-                            tabindex="0"
-                            title="School Location">
-                        </iframe>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            Main Road, Ashok Vihar, Loni,<br>
+                            Ghaziabad, UP - 201102
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            +91 9811198112
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            principal@jrinternational.edu.in
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-container">
-                    <h3>Send an Inquiry</h3>
-                    <form class="contact-form" id="contactForm" onsubmit="return validateForm(event)">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                        <input type="email" id="email" placeholder="Your Email" required>
-                        <input type="tel" id="phone" placeholder="Your Phone Number">
-                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                <!-- Real-time Interactive Map (Google Embed) -->
+                <div class="map-section">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=J.R.+International+Hr.+Sec.+School+Ashok+Vihar+Loni+Ghaziabad&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        title="J.R. International School Location">
+                    </iframe>
                 </div>
+            </div>
+
+            <!-- Simple Inquiry Form below -->
+            <div class="card" style="margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 class="text-center" style="margin-bottom: 20px;">Send a Message</h3>
+                <form id="contactForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Mobile Number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" class="form-control" placeholder="Your Message or Inquiry" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 J.R. International Hr. Sec. School. All Rights Reserved.</p>
-            <p style="font-size: 0.8rem; margin-top: 10px;">Association: J.R. Global Association | J.R. International</p>
-            <div class="footer-links" style="margin-top: 15px;">
-                <a href="#home">Home</a> | 
-                <a href="#about">About</a> | 
-                <a href="#contact">Contact</a>
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4 style="color: var(--primary);">J.R. International</h4>
+                    <p style="color: #bdc3c7;">Come to Learn, Go to Serve.<br>Good People, Good School.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <p style="color: #bdc3c7;">Mon - Sat: 8:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                </div>
             </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 J.R. International Hr. Sec. School. All Rights Reserved.
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Toggle Mobile Menu
+        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            // Animate hamburger
+            const bars = document.querySelectorAll('.bar');
+            if(navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                bars[0].style.transform = 'none';
+                bars[0].style.top = '0';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+                bars[2].style.bottom = '0';
+            } else {
+                navMenu.classList.add('active');
+                bars[0].style.top = '50%';
+                bars[0].style.transform = 'translateY(-50%) rotate(45deg)';
+                bars[1].style.opacity = '0';
+                bars[2].style.bottom = '50%';
+                bars[2].style.transform = 'translateY(50%) rotate(-45deg)';
+            }
         });
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        // Close menu on link click
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+                navMenu.classList.remove('active');
+                const bars = document.querySelectorAll('.bar');
+                bars[0].style.transform = 'none';
+                bars[0].style.top = '0';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+                bars[2].style.bottom = '0';
             });
         });
 
-        // Simple Form Validation
-        function validateForm(event) {
-            event.preventDefault(); // Prevent actual submission for this demo
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if(name && email && message) {
-                alert(`Thank you, ${name}! Your message has been sent to the school administration.`);
-                document.getElementById('contactForm').reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-            return false;
-        }
+        // Simple Form Alert
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent. We will contact you shortly.');
+            this.reset();
+        });
     </script>
 </body>
 </html>
